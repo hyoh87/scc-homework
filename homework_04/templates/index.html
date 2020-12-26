@@ -29,7 +29,7 @@
             }
                 $(document).ready(function () {
                 $("#orders-box").html("");
-                /*showExchange();*/
+                todayExchange();
                 showOrders();
             });
 
@@ -107,36 +107,22 @@
                 $("#orders-box").append(tempHtml);
             }
 
-        /*    function showExchange(){
-                $.ajax({
-                    type: "GET",
-                    url: "https://api.manana.kr/exchange/rate.json",
-                    data: {},
-                    success: function (response){
-                        for (let i = 0; i < response.length; i++) {
-                            if(response[i]["name"]) == "USDKRW=X" {
-                                $("#exchange").text(response[i]["rate"]);
-                                return;
-                            }
-
-                        }
-                    }
-                })
-            }*/
-   function showExchange(){
-	 $.ajax({
-                    type: "GET",
-                    url: "https://api.manana.kr/exchange/rate.json",
-                    data: {},
-                    success: function (response){
-                        let nowRate = response[i]['rate']
-                                $("#exchange").text(nowRate);
+      function todayExchange(){
+       $.ajax({
+           type: "GET",
+           url: "https://api.manana.kr/exchange/rate.json",
+           data: {},
+           success: function (response){
+               for (let i = 0; i < response.length; i++) {
+                   if (response[i]['name'] == 'USDKRW=X') {
+                       $('#exchange').text(response[i]['rate']);
+                   }
+               }
 
 
-
-                    }
-                })
-}
+           }
+       })
+   }
 
 
 
